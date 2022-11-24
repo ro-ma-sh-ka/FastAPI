@@ -1,4 +1,4 @@
-#!/home/romashka/python/fastapi/venv/bin/python3
+#!/home/romashka/python/fastapi/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
