@@ -11,6 +11,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 
+# create session to connect to db and close it after (from sqlalchemy's official page)
 def get_db():
     db = SessionLocal()
     try:
