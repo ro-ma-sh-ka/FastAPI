@@ -33,3 +33,8 @@ class UserOut(BaseModel):
     # to read a data even it isn't a dict
     class Config:
         orm_mode = True
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
