@@ -37,6 +37,7 @@ class Post(PostBase):
     id: int
     created_at: datetime
     owner_id: int
+    # all information about user which we allow into UserOut schema
     owner: UserOut
 
     # to read a data even it isn't a dict

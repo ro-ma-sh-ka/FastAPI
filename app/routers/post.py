@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from fastapi import status, HTTPException, Depends, APIRouter, Response
 from sqlalchemy.orm import Session
 from .. import models, schemas, oauth2
@@ -15,8 +15,14 @@ router = APIRouter(
 
 # we use type List from typing to adjust our schema Post showing list of data
 @router.get("/", response_model=List[schemas.Post])
-def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
-    posts = db.query(models.Post).all()
+def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user),
+              limit: int = 10, skip: int = 0, search: Optional[str] = ""):
+
+    # query parameters#
+    # limit = how many results will have a user, we use method limit
+    # skip = how many results query will skip, we use method offset. We can use it for pagination
+    # search - search key words, We use method filter
+    posts = db.query(models.Post).filter(models.Post.title.contains(search)).limit(limit).offset(skip).all()
     return posts
 
 
