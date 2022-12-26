@@ -7,10 +7,7 @@ from ..database import get_db
 # we use router to divide path operations into different files
 # use parameter prefix to remove the same path from decorators
 # use parameter tags to divide path operations into docs page by groups
-router = APIRouter(
-    prefix="/posts",
-    tags=['Posts']
-)
+router = APIRouter(prefix="/posts", tags=['Posts'])
 
 
 # we use type List from typing to adjust our schema Post showing list of data
